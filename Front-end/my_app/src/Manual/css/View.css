@@ -1,0 +1,376 @@
+.view-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border: 2px solid #3BA6D4;
+  border-radius: 10px;
+  background-color: #97D8F4;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.search-input {
+  flex: 2;
+  padding: 0.5rem;
+  border: 1px solid #00A4CCFF;
+  border-radius: 5px;
+  background-color: white;
+  color: #3BA6D4;
+}
+
+.search-selector {
+  flex: 0.5;
+  padding: 0.5rem;
+  border: 1px solid #00A4CCFF;
+  border-radius: 5px;
+  background-color: white;
+  color: #3BA6D4;
+}
+
+.search-button, .group-toggle-button {
+  flex: 0.5;
+  padding: 0.5rem;
+  border: 1px solid #00A4CCFF;
+  border-radius: 5px;
+  background-color: white;
+  color: #3BA6D4;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.search-button:hover, .group-toggle-button:hover {
+  background-color: #3BA6D4;
+  color: white;
+}
+
+.view-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+.view-item {
+  
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #00A4CCFF;
+  border-radius: 10px;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.view-title {
+  display: block;
+  background-color: #3BA6D4;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.view-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.view-description {
+  flex-grow: 1;
+  margin-left: 15px;
+  border-radius: 5px;
+  border: 2px solid #3BA6D4;
+  background-color: white;
+  font-weight: bold;
+  color: #3BA6D4;
+  padding: 0.5rem;
+}
+
+.view-time {
+  flex-basis: 60px;
+  border-radius: 5px;
+  border: 2px solid #3BA6D4;
+  background-color: white;
+  color: #3BA6D4;
+  padding: 0.5rem;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.view-rating {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.5rem 0;
+}
+
+.star-rating {
+  display: inline-block;
+  width: 22px; /* Aumenta la dimensione della stella */
+  height: 22px; /* Aumenta la dimensione della stella */
+  background-color: #e3e4e4; 
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 
+    68% 57%, 79% 91%, 50% 70%, 
+    21% 91%, 32% 57%, 2% 35%, 
+    39% 35%
+  ); 
+  margin-right: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Aggiungi transizione per trasformazione e colore */
+  border-radius: 10%; /* Arrotonda leggermente i bordi delle stelle */
+}
+
+.star-rating.selected {
+  background-color: #3BA6D4; 
+  transform: scale(1.2); /* Scala leggermente le stelle selezionate per un effetto dinamico */
+}
+
+.star-rating:hover {
+  transform: scale(1.1); /* Aumenta leggermente la dimensione al passaggio del mouse */
+  background-color: #87ceeb; /* Cambia colore al passaggio del mouse */
+}
+
+
+.view-rating input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: #4CAF50; /* Cambia a seconda del tuo tema di colori */
+}
+
+/* Nascondere il radio button ma mantenerlo funzionale */
+.view-rating input[type="radio"] {
+  display: none;
+}
+
+/* Opzionale: Stile per hover e focus per il radio button */
+.view-rating label:hover,
+.view-rating input[type="radio"]:focus + label {
+  color: #4CAF50;
+}
+.button-container-info {
+  display: flex;
+  justify-content: right; /* Center the buttons horizontally */
+  gap: 0.2rem; /* Adjust the spacing between buttons */
+  margin-bottom: 0.2rem; /* Add some spacing below the buttons */
+}
+.button-export, .upload-button {
+  background-color: #3BA6D4;
+  color: white;
+  border: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  margin-top: -10px;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+}
+.upload-button {
+  margin-left: 5px;
+}
+
+
+
+.button-export:hover, .upload-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+/* View.css */
+/* Esistente */
+.loading-overlay, .confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: backdrop-filter 0.5s ease-in-out; /* Transizione per il blur */
+}
+
+/* Animazioni esistenti per fade-in e fade-out */
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Nuova animazione per il pop-up */
+@keyframes popup {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes popout {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.5); opacity: 0; }
+}
+
+/* Aggiungere animazioni al dialogo di conferma */
+.confirm-dialog {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: popup 0.3s forwards; /* Animazione di entrata */
+}
+
+/* Applicare l'animazione di uscita se necessario */
+.confirm-overlay.hide .confirm-dialog {
+  animation: popout 0.3s forwards;
+}
+
+/* Aggiunta del CSS per il pulsante di eliminazione */
+.delete-button {
+  background-color: #3BA6D4; /* Sfondo azzurro */
+  width: 25px; /* Dimensione del cerchio */
+  height: 25px; /* Dimensione del cerchio */
+  border-radius: 50%; /* Trasforma in cerchio */
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  border: none; /* Rimuove il bordo */
+}
+
+.delete-button::before,
+.delete-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px; /* Larghezza della X */
+  height: 3px; /* Spessore della X */
+  background-color: white; /* Colore della X bianca */
+  transform-origin: center;
+}
+
+.delete-button::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.delete-button::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.delete-button:hover {
+  background-color: #0056b3; /* Colore più scuro al passaggio del mouse */
+  transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+
+.top-left-button-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
+.reload-button {
+  background-color: white;
+  color: #3BA6D4; /* Colore del testo */
+  border: 2px solid white; /* Bordo bianco per farlo sembrare invisibile */
+  font-weight: bold;
+  font-size: 0.8rem;  /* Ridotto da 0.9rem a 0.8rem */
+  padding: 5px 10px;  /* Ridotto da 10px 20px a 5px 10px */
+  cursor: pointer;
+  border-radius: 5px;
+  height: 30px;  /* Ridotto l'altezza */
+  transition: border 0.3s, background-color 0.3s, color 0.3s; /* Aggiunto transizione per il bordo */
+}
+
+.reload-button:hover {
+  border: 2px solid #3BA6D4; /* Bordo colore testo */
+  background-color: #f0f0f0; /* Un leggero grigio chiaro per il background al passaggio del mouse */
+}
+
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: backdrop-filter 0.5s ease-in-out; /* Transizione per il blur */
+}
+
+.confirm-dialog {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: popup 0.3s forwards; /* Animazione di entrata */
+}
+
+.confirm-button {
+  background-color: #3BA6D4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.confirm-button:hover {
+  background-color: #3BA6D4;
+}
+
+.close-button {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background-color: #3BA6D4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  line-height: 25px;
+}
+
+.close-button:hover {
+  background-color: #3BA6D4;
+}
+
+/* Aggiungi questa regola per lo slider di durata del videoclip */
+.clip-duration-slider {
+  width: 100%;
+  margin: 10px 0;
+  color: #3BA6D4;
+}

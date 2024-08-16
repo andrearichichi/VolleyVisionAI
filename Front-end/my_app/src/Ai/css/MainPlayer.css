@@ -1,0 +1,8 @@
+
+  .ai-react-player {
+
+    border-radius: 10px; /* Angoli arrotondati */
+    overflow: hidden; /* Nasconde parti del video che potrebbero fuoriuscire a causa del border-radius */
+    aspect-ratio: 16 / 9; /* Mantiene un rapporto di aspetto di 16:9 */
+  }
+  
